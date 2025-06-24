@@ -9,11 +9,11 @@ namespace Exer11.models
     public class ListaDeContatos
     {
         
-        static String path = "C:\\Users\\rodri\\Infnet\\Exer11\\Lista\\Lista.txt"; // Caminho do arquivo onde os contatos serão armazenados
+        static String path { get; set; } =  "C:\\Users\\rodri\\Infnet\\Exer11\\Lista\\Lista.txt"; // Caminho do arquivo onde os contatos serão armazenados
 
         public static void InserirContato(Contato contato)
         {
-            iniciarArq(); // Verifica se o arquivo existe, caso contrário, cria um novo
+            IniciarArq(); // Verifica se o arquivo existe, caso contrário, cria um novo
 
             StreamWriter escritor = null;
 
@@ -40,13 +40,14 @@ namespace Exer11.models
                 
             }
         }
-        public static void listarContatos()
+        public static void ListarContatos()
         {
             StreamReader leitor = null;
             try
             {
                 leitor = new StreamReader(path);
                 string contatoInfo = leitor.ReadLine();
+
                 if(contatoInfo == null)
                 {
                     leitor.Close();
@@ -60,6 +61,7 @@ namespace Exer11.models
                     string[] strings = contatoInfo.Split(',');
 
                     Console.WriteLine($"\nNome: {strings[0]} | Telefone:{strings[1]} | Email:{strings[2]}");
+
                     contatoInfo = leitor.ReadLine();
                 }
 
@@ -81,7 +83,7 @@ namespace Exer11.models
                 
             }
         }
-        private static void iniciarArq()
+        private static void IniciarArq()
         {
             bool erro = false;
             do

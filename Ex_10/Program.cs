@@ -16,7 +16,7 @@ class Program
         do
         {
 
-            userNum = Usuario.requisitarInteiro($"Insira um número 1 a 50 ({vidas} vidas restante)", 1, 50);
+            userNum = Usuario.RequisitarInteiro($"Insira um número 1 a 50 ({vidas} vidas restante)", 1, 50);
 
             if (userNum == numero)
             {

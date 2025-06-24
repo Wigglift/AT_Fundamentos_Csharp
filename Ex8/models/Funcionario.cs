@@ -8,14 +8,14 @@ namespace Ex8.models
 {
     public class Funcionario
     {
-        public String nome { get; set; }
-        public String cargo { get; set; }
-        public double salarioBase { get; set; } = 2450.89;
+        public String Nome { get; set; }
+        public String Cargo { get; set; }
+        public double SalarioBase { get; set; } = 2450.89;
 
         public Funcionario(String nome, String cargo)
         {
-            this.nome = nome;
-            this.cargo = cargo;
+            this.Nome = nome;
+            this.Cargo = cargo;
         }
     }
 }

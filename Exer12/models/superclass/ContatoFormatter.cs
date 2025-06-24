@@ -9,5 +9,7 @@ namespace Exer12.models.superclass
     abstract public class ContatoFormatter
     {
         abstract public void ExibirContatos(List<Contato> contatos);
+
+        
     }
 }

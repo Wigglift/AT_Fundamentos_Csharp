@@ -8,29 +8,29 @@ namespace Ex9.models
 {
     public class Produto
     {
-        String nome { get; set; }
-        int quantidadeEmEstoque { get; set; }
-        double preco { get; set; }
+        String Nome { get; set; }
+        int QuantidadeEmEstoque { get; set; }
+        double Preco { get; set; }
 
         
         public Produto(String nome, int quantidadeEmEstoque, double preco)
         {
-            this.nome = nome;
-            this.quantidadeEmEstoque = quantidadeEmEstoque;
-            this.preco = preco;
+            this.Nome = nome;
+            this.QuantidadeEmEstoque = quantidadeEmEstoque;
+            this.Preco = preco;
         }
         
-        internal void exibirDados()
+        internal void ExibirDados()
         {
-            Console.Write("\nNome: " + this.nome);
-            Console.Write(" | Quantidade em Estoque: " + this.quantidadeEmEstoque);
-            Console.Write(" | Preço: " + this.preco.ToString("C2"));
+            Console.Write("\nNome: " + this.Nome);
+            Console.Write(" | Quantidade em Estoque: " + this.QuantidadeEmEstoque);
+            Console.Write(" | Preço: " + this.Preco.ToString("C2"));
         }
 
         public override string ToString()
         {
             // Retorna uma representação em string do produto, que será usada para escrever no arquivo
-            return $"{this.nome},{this.quantidadeEmEstoque},{this.preco.ToString("F2")}";
+            return $"{this.Nome},{this.QuantidadeEmEstoque},{this.Preco.ToString("F2")}";
         }
     }
 }

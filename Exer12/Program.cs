@@ -13,16 +13,16 @@ class Program
 
         do
         {
-            mostrarMenu();
+            MostrarMenu();
 
-            int opcao = Usuario.requisitarInteiro("Escolha uma opção: ", 1, 3);
+            int opcao = Usuario.RequisitarInteiro("Escolha uma opção: ", 1, 3);
             switch (opcao)
             {
                 case 1:
-                    ListaDeContatos.InserirContato(montarContato());
+                    ListaDeContatos.InserirContato(MontarContato());
                     break;
                 case 2:
-                    ListaDeContatos.listarContatos();
+                    ListaDeContatos.ListarContatos();
                     break;
                 case 3:
                     sair = true;
@@ -37,7 +37,7 @@ class Program
         Console.WriteLine("\nObrigado por usar o sistema de contatos! Até logo!");
     }
 
-    public static void mostrarMenu()
+    public static void MostrarMenu()
     {
         Console.WriteLine("\n==Gerenciador de Contatos==\n");
 
@@ -46,14 +46,14 @@ class Program
         Console.WriteLine("3. Sair");
     }
 
-    public static Contato montarContato()
+    public static Contato MontarContato()
     {
         Console.WriteLine("\nDigite o nome do contato:");
         string nome = Console.ReadLine();
 
-        Int64 telefone = Usuario.requisitarNumeroCel("\nDigite o telefone do contato (formato: 11912345678): ");
+        Int64 telefone = Usuario.RequisitarNumeroCel("\nDigite o telefone do contato (formato: 11912345678): ");
 
-        string email = Usuario.requisitarEmail("\nDigite o email do contato: ");
+        string email = Usuario.RequisitarEmail("\nDigite o email do contato: ");
 
         return new Contato(nome, telefone.ToString(), email);
 

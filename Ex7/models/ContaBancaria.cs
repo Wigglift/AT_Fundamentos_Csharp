@@ -8,13 +8,13 @@ namespace Ex7.models
 {
     internal class ContaBancaria
     {
-        public string titular { get; set; }
-        private double saldo { get; set; }
+        public string Titular { get; set; }
+        private double Saldo { get; set; }
 
         public ContaBancaria(string titular)
         {
-            this.titular = titular;
-            this.saldo = 0;
+            this.Titular = titular;
+            this.Saldo = 0;
         }
 
         public void Depositar(double valor)
@@ -24,26 +24,26 @@ namespace Ex7.models
                 Console.WriteLine("O valor do depósito deve ser positivo!");
             }
             else {
-                saldo += valor;
+                Saldo += valor;
             }
         }
 
-        public void sacar(double valor)
+        public void Sacar(double valor)
         {
-            if (valor > this.saldo)
+            if (valor > this.Saldo)
             {
                 Console.WriteLine("Saldo insuficiente para realizar o saque!");
             } else
             {
-                this.saldo -= valor;
+                this.Saldo -= valor;
             }
 
             
         }
 
-        public double exibirSaldo()
+        public double ExibirSaldo()
         {
-            return this.saldo;
+            return this.Saldo;
         }
     }   
 }

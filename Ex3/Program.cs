@@ -5,58 +5,57 @@ namespace Ex3;
 class Program
 {
     public static void Main(String[] args)
-    {while (true)
+    {
         {
             double a, b;
             int escolha;
 
-            a = requisitarDouble("Digite o primeiro número(!Use a vírgula para separar a parte decimal!): ");
-            b = requisitarDouble("Digite o segundo número!Use a vírgula para separar a parte decimal!: ");
+            a = RequisitarDouble("Digite o primeiro número(!Use a vírgula para separar a parte decimal!): ");
+            b = RequisitarDouble("Digite o segundo número!Use a vírgula para separar a parte decimal!: ");
 
-            mostrarOpcoes();
+            MostrarOpcoes();
 
-            escolha = requisitarOperacao("Digite o número da operação desejada: ");
+            escolha = RequisitarOperacao("Digite o número da operação desejada: ");
 
-            double resultado = calcularResultado(escolha, a, b);
+            double resultado = CalcularResultado(escolha, a, b);
 
             if (!double.IsNaN(resultado)) // Verifica se o resultado é válido (não é NaN)
             {
-                mostrarResultado(resultado);
+                MostrarResultado(resultado);
             }
         }
 
     }
-    static double requisitarDouble(String mensagem)
+    static double RequisitarDouble(String mensagem)
     {
         bool erro = false;
 
         double x = 0; // Inicializa x com 0 para evitar erros de referência antes da atribuição
 
-        do
-        {//Loop para garantir que o usuário digite um número válido
-        try
-        {
-            erro = false; // Reseta o erro para false a cada iteração
-            Console.WriteLine(mensagem);
-            x = double.Parse(Console.ReadLine());
+        do{
+            try
+            {
+                erro = false; // Reseta o erro para false a cada iteração
+                Console.WriteLine(mensagem);
+                x = double.Parse(Console.ReadLine());
 
-        }
-        catch (FormatException e1)
-        {
-            erro = true; // Se ocorrer um erro de formato, define erro como true para repetir o loop
-            Console.WriteLine("Erro: {0}. Por favor, digite um número válido.", "Formato inválido");
-        }
-        catch (Exception e2)
-        {
-            erro = true;// Se ocorrer um erro, define erro como true para repetir o loop
-            Console.WriteLine("Erro: {0}. Por favor, digite um número válido.", e2.Message);
-        }
-    } while (erro);
+            }
+            catch (FormatException e1)
+            {
+                erro = true; // Se ocorrer um erro de formato, define erro como true para repetir o loop
+                Console.WriteLine("Erro: {0}. Por favor, digite um número válido.", "Formato inválido");
+            }
+            catch (Exception e2)
+            {
+                erro = true;// Se ocorrer um erro, define erro como true para repetir o loop
+                Console.WriteLine("Erro: {0}. Por favor, digite um número válido.", e2.Message);
+            }
+        } while (erro);
 
         return x;
     }
 
-    static int requisitarOperacao(String mensagem)
+    static int RequisitarOperacao(String mensagem)
     {
         bool erro = false;
 
@@ -92,7 +91,7 @@ class Program
         return x;
     }
 
-    static void mostrarOpcoes()
+    static void MostrarOpcoes()
     {
         Console.WriteLine("Escolha uma operação:");
         Console.WriteLine("1 - Soma");
@@ -101,29 +100,29 @@ class Program
         Console.WriteLine("4 - Divisão");
     }
 
-    static void mostrarResultado(double resultado)
+    static void MostrarResultado(double resultado)
     {
         Console.WriteLine("O resultado da operação é: " + resultado);
     }
 
-    static double calcularResultado(int escolha, double a, double b)
+    static double CalcularResultado(int escolha, double a, double b)
     {
         double resultado = 0;
         switch (escolha)
         {
             case 1:
-                return resultado = Calculadora.soma(a, b);
+                return resultado = Calculadora.Soma(a, b);
                 
             case 2:
-                return resultado = Calculadora.subtracao(a, b);
+                return resultado = Calculadora.Subtracao(a, b);
                 
             case 3:
-                return resultado = Calculadora.multiplicacao(a, b);
+                return resultado = Calculadora.Multiplicacao(a, b);
                 
             case 4:
                 try
                 {
-                    resultado = Calculadora.divisao(a, b);
+                    resultado = Calculadora.Divisao(a, b);
                 }
                 catch (DivideByZeroException e)
                 {

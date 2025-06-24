@@ -12,6 +12,6 @@ class Program
 
         Cifrador cifrador = new Cifrador(nome);
 
-        Console.WriteLine("Seu nome cifrado é {0}", cifrador.mostrarResultado());
+        Console.WriteLine("Seu nome cifrado é {0}", cifrador.Cifrar());
     }
 }

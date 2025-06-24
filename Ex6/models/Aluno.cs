@@ -8,36 +8,36 @@ namespace Ex6.models
 {
     public class Aluno
     {
-        string nome { get; set; }
-        int matricula { get; set; }
+        string Nome { get; set; }
+        int Matricula { get; set; }
 
-        string curso { get; set; } 
+        string Curso { get; set; } 
         
-        double mediaDasNotas { get; set; }
+        double MediaDasNotas { get; set; }
 
 
         public Aluno(string nome, int matricula, string curso, double mediaDasNotas)
         {
             // Construtor da classe Aluno que inicializa os atributos
-            this.nome = nome;
-            this.matricula = matricula;
-            this.curso = curso;
-            this.mediaDasNotas = mediaDasNotas;
+            this.Nome = nome;
+            this.Matricula = matricula;
+            this.Curso = curso;
+            this.MediaDasNotas = mediaDasNotas;
         }
     
 
 
-        public void exibirDados()
+        public void ExibirDados()
         {
-            Console.WriteLine("Nome: " + this.nome);
-            Console.WriteLine("Matrícula: " + this.matricula);
-            Console.WriteLine("Curso: " + this.curso);
-            Console.WriteLine("Média das Notas: " + this.mediaDasNotas);
+            Console.WriteLine("Nome: " + this.Nome);
+            Console.WriteLine("Matrícula: " + this.Matricula);
+            Console.WriteLine("Curso: " + this.Curso);
+            Console.WriteLine("Média das Notas: " + this.MediaDasNotas);
         }
 
-        public String verificarAprovacao()
+        public String VerificarAprovacao()
         {
-            if (this.mediaDasNotas >= 7)
+            if (this.MediaDasNotas >= 7)
             {
                 return "Aprovado";
             }

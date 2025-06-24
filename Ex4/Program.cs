@@ -7,11 +7,11 @@ class Program
 {
     public static void Main(string[] args)
     {
-        DateTime Data_nasc = pegarData();
+        DateTime dataNasc = PegarData();
 
-        apresentarProxDias(proxAniversario(Data_nasc));
+        ApresentarProxDias(ProxAniversario(dataNasc));
     }
-    static DateTime pegarData()
+    static DateTime PegarData()
     {
         bool erro = false;
         do
@@ -58,33 +58,33 @@ class Program
         return DateTime.MinValue; // Retorna um valor padrão para possibilitar a compilação do código;
     }
 
-    static int proxAniversario(DateTime data)
+    static int ProxAniversario(DateTime data)
     {
         // Calcula o próximo aniversário com base na data de nascimento fornecida
 
-        int prox_ano = DateTime.Today.Year + 1;// Define o próximo ano para garantir que o próximo aniversário seja calculado corretamente
+        int proxAno = DateTime.Today.Year + 1;// Define o próximo ano para garantir que o próximo aniversário seja calculado corretamente
 
         Calendar cal = new GregorianCalendar();// Cria uma instância do calendário gregoriano para manipulação de datas
 
-        DateTime prox_niver = new DateTime(prox_ano, data.Month, data.Day);// Cria uma nova data para o próximo aniversário com base no mês e dia da data de nascimento fornecida, mas no próximo ano
+        DateTime proxAniversario = new DateTime(proxAno, data.Month, data.Day);// Cria uma nova data para o próximo aniversário com base no mês e dia da data de nascimento fornecida, mas no próximo ano
 
-        DateTime data_atual = DateTime.Today;
+        DateTime dataAtual = DateTime.Today;
 
 
-        TimeSpan dias = prox_niver - data_atual;// Calcula a diferença em dias entre o próximo aniversário e a data atual
+        TimeSpan dias = proxAniversario - dataAtual;// Calcula a diferença em dias entre o próximo aniversário e a data atual
 
-        if (dias.TotalDays > cal.GetDaysInYear(data_atual.Year))//Caso a diferença seja maior que o número de dias no ano atual, significa que o próximo aniversário será nesse ano
+        if (dias.TotalDays > cal.GetDaysInYear(dataAtual.Year))//Caso a diferença seja maior que o número de dias no ano atual, significa que o próximo aniversário será nesse ano
         {
-            prox_niver = new DateTime(data_atual.Year, data.Month, data.Day);// Cria uma nova data para o próximo aniversário com base no ano atual e refaz o cálculo da diferença em dias
+            proxAniversario = new DateTime(dataAtual.Year, data.Month, data.Day);// Cria uma nova data para o próximo aniversário com base no ano atual e refaz o cálculo da diferença em dias
 
-            dias = prox_niver - data_atual;
+            dias = proxAniversario - dataAtual;
         }
 
 
             return (int)dias.TotalDays;
         }
 
-    static void apresentarProxDias(int dias)
+    static void ApresentarProxDias(int dias)
     {
         if (dias <8) Console.WriteLine("Falta menos de 1 semana para seu aniversário!");
         else Console.WriteLine("Faltam {0} dias para o seu aniversário!", dias);

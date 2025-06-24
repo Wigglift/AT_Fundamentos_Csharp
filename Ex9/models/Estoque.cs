@@ -8,20 +8,20 @@ namespace Ex9.models
 {
     public class Estoque
     {
-        static List<Produto> produtos = new List<Produto>();// Lista estática para armazenar os produtos no estoque que estão sendo adicionados quando o programa é executado
+        static List<Produto> Produtos { get; set; } = new List<Produto>();// Lista estática para armazenar os produtos no estoque que estão sendo adicionados quando o programa é executado
 
-        static String path = "C:\\Users\\rodri\\Infnet\\AT_C#\\Ex9\\Lista\\Lista.txt"; // Caminho do arquivo onde os produtos serão armazenados
+        static String Path { get; set; } = "C:\\Users\\rodri\\Infnet\\AT_C#\\Ex9\\Lista\\Lista.txt";// Caminho do arquivo onde os produtos serão armazenados
 
      
-        public static void inserirProduto(Produto produto)
+        public static void InserirProduto(Produto produto)
         {
             {
-                iniciarArq(); // Verifica se o arquivo existe, caso contrário, cria um novo
+                IniciarArq(); // Verifica se o arquivo existe, caso contrário, cria um novo
                 try
                 {
-                    StreamWriter escritor = new StreamWriter(path, true);
+                    StreamWriter escritor = new StreamWriter(Path, true);
                     // Verifica se o estoque já está cheio (mais de 5 produtos)
-                    if (estoqueCheio())
+                    if (EstoqueCheio())
                     {
                         Console.WriteLine("Estoque cheio, não é possível inserir mais produtos.");
                         escritor.Close();
@@ -30,7 +30,7 @@ namespace Ex9.models
                     {
                         escritor.WriteLine(produto.ToString());
 
-                        produtos.Add(produto);
+                        Produtos.Add(produto);
                         Console.WriteLine("Produto inserido com sucesso.");
                         escritor.Close();
                     }
@@ -49,12 +49,12 @@ namespace Ex9.models
             }
         }
 
-        public static void listarProdutos()
+        public static void ListarProdutos()
         {
-            iniciarArq();// Verifica se o arquivo existe, caso contrário, cria um novo
+            IniciarArq();// Verifica se o arquivo existe, caso contrário, cria um novo
             try
             {
-                StreamReader leitor = new StreamReader(path);
+                StreamReader leitor = new StreamReader(Path);
 
                 // Verifica se a lista de produtos está vazia
                 string produtoInfo = leitor.ReadLine();
@@ -75,7 +75,7 @@ namespace Ex9.models
                         string[] produtoDados = produtoInfo.Split(',');
 
                         Produto produto = new Produto(produtoDados[0], int.Parse(produtoDados[1]), double.Parse(produtoDados[2]));
-                        produto.exibirDados(); // Exibe os dados do produto
+                        produto.ExibirDados(); // Exibe os dados do produto
 
                         produtoInfo = leitor.ReadLine();
 
@@ -98,13 +98,13 @@ namespace Ex9.models
         }
 
 
-        public static bool estoqueCheio()
+        public static bool EstoqueCheio()
         {
             // Verifica se o estoque está cheio (mais de 5 produtos)
-            return produtos.Count > 4;
+            return Produtos.Count > 4;
         }
 
-        private static void iniciarArq()
+        private static void IniciarArq()
         {
             bool erro = false;
             do
@@ -112,9 +112,9 @@ namespace Ex9.models
                 try
                 {
                     erro = false;
-                    if (!File.Exists(path))
+                    if (!File.Exists(Path))
                     {
-                        File.Create(path).Close();
+                        File.Create(Path).Close();
                     }
                 }
                 catch (Exception e)
@@ -127,7 +127,7 @@ namespace Ex9.models
                     var newPath = Console.ReadLine();
 
                     newPath = newPath.Replace("\\", "\\\\"); // Remove o barra normal por barra dupla para o sistema poder ler o caminho
-                    path = newPath + "Lista.txt";
+                    Path = newPath + "Lista.txt";
 
                     Console.WriteLine("Novo caminho adicionado");
                 }

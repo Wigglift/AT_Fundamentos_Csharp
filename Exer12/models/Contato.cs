@@ -19,20 +19,29 @@ namespace Exer12.models
             get { return telefone; }
             set
             {
-                if (!value.Contains("-")) {
-                if (value.Length == 11)
+                if (!value.Contains("-"))
                 {
-                    telefone = value.Insert(2, " ");
-                    telefone = telefone.Insert(8, "-");
+                    // Verifica se o telefone já está formatado com o hífen
+
+                    if (value.Length == 11)
+                    {
+                        // Formata o telefone para o padrão (XX) XXXXX-XXXX
+                        telefone = value.Insert(2, " ");
+                        telefone = telefone.Insert(8, "-");
+
+                    }
+                    else
+                    {
+                        // Formata o telefone para o padrão (XX) XXXX-XXXX
+                        telefone = value.Insert(2, " ");
+                        telefone = telefone.Insert(7, "-");
+                    }
                 }
                 else
                 {
-                    telefone = value.Insert(2, " ");
-                    telefone = telefone.Insert(7, "-");
-                }
-                }else
-                {
+
                     telefone = value;
+
                 }
             }
 

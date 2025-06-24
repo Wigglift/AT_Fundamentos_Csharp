@@ -9,7 +9,7 @@ namespace Exer11.models
 {
     public class Usuario
     {
-        public static int requisitarInteiro(String mensagem, int min, int max, Action menu)
+        public static int RequisitarInteiro(String mensagem, int min, int max, Action menu)
         {
             bool erro = false;
 
@@ -50,7 +50,7 @@ namespace Exer11.models
             return x;
         }
         // Override de requisitarInteiro para caso não tenha um menu
-        public static int requisitarInteiro(String mensagem, int min, int max)
+        public static int RequisitarInteiro(String mensagem, int min, int max)
         {
             bool erro = false;
 
@@ -91,7 +91,7 @@ namespace Exer11.models
             return x;
         }
         // Override de requisitarInteiro para caso não haja limite máximo
-        public static int requisitarInteiro(String mensagem, int min)
+        public static int RequisitarInteiro(String mensagem, int min)
         {
             bool erro = false;
 
@@ -130,7 +130,7 @@ namespace Exer11.models
 
         }
         //Override de requisitarOpcao para caso não haja limite de opções
-        public static int requisitarInteiro(String mensagem)
+        public static int RequisitarInteiro(String mensagem)
         {
             bool erro = false;
 
@@ -161,7 +161,7 @@ namespace Exer11.models
         }
 
 
-        public static double requisitarPreco(String mensagem)
+        public static double RequisitarPreco(String mensagem)
         {
             {
                 bool erro = false;
@@ -204,7 +204,7 @@ namespace Exer11.models
         }
 
 
-        public static double requisitarDouble(String mensagem)
+        public static double RequisitarDouble(String mensagem)
 
 
         {
@@ -236,7 +236,7 @@ namespace Exer11.models
             return x;
         }
         //Override de requisitarDouble para caso haja limite de opções
-        public static double requisitarDouble(String mensagem,double min, double max)
+        public static double RequisitarDouble(String mensagem,double min, double max)
         {
             bool erro = false;
 
@@ -277,7 +277,7 @@ namespace Exer11.models
         }
 
 
-        public static Int64 requisitarNumeroCel(String mensagem)
+        public static Int64 RequisitarNumeroCel(String mensagem)
         {
             bool erro = false;
 
@@ -298,12 +298,12 @@ namespace Exer11.models
                     }
 
                 }
-                catch (ArgumentOutOfRangeException e2)
+                catch (ArgumentOutOfRangeException)
                 {
                     erro = true; 
                     Console.WriteLine("Erro: {0}. Por favor, digite um número válido.", "O número de telefone deve ter 10 ou 11 dígitos.");
                 }
-                catch (FormatException e1)
+                catch (FormatException)
                 {
                     erro = true; // Se ocorrer um erro de formato, define erro como true para repetir o loop
                     Console.WriteLine("Erro: {0}. Por favor, digite um número válido.", "Formato inválido");
@@ -318,7 +318,7 @@ namespace Exer11.models
             return x;
         }
 
-        public static string requisitarEmail(String mensagem) { 
+        public static string RequisitarEmail(String mensagem) { 
         string x = null;
 
             bool erro = false;

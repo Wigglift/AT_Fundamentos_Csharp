@@ -8,23 +8,23 @@ namespace Ex3.models
 {
     public class Calculadora
     {
-        public static double soma(double a, double b)
+        public static double Soma(double a, double b)
         {
             return a + b;
         }
-
-        public static double subtracao(double a, double b)
+        
+        public static double Subtracao(double a, double b)
         {
             return a - b;
         }
 
-        public static double multiplicacao(double a, double b)
+        public static double Multiplicacao(double a, double b)
         {
             return a * b;
         }
 
         //Caso o usuário tente dividir por 0 jogaremos um erro de divisão por zero
-        public static double divisao(double a, double b)
+        public static double Divisao(double a, double b)
         {
             if (b == 0)
             {

@@ -8,12 +8,12 @@ public class Program
     public static void Main(String[] args)
     {
 
-        DateTime dataAtual = pegarData(); // Pega a data atual do usuário
+        DateTime dataAtual = PegarData(); // Pega a data atual do usuário
 
-        apresentarProxDias(diferencaData(formatura, dataAtual)); // Calcula e apresenta a diferença entre a data da formatura e a data atual
+        ApresentarProxDias(DiferencaData(formatura, dataAtual)); // Calcula e apresenta a diferença entre a data da formatura e a data atual
     }
 
-    static DateTime pegarData()
+    static DateTime PegarData()
     {
         bool erro = false;
         do
@@ -61,39 +61,39 @@ public class Program
         return DateTime.MinValue; // Retorna um valor padrão para possibilitar a compilação do código;
     }
 
-    public static int[] diferencaData(DateTime data1, DateTime data2)
+    public static int[] DiferencaData(DateTime data1, DateTime data2)
 
     {
 
-        int[] dif_data = new int[3]; // Array para armazenar anos, meses e dias de diferença entre as datas
+        int[] diferencaDatasArray = new int[3]; // Array para armazenar anos, meses e dias de diferença entre as datas
 
-        TimeSpan data_span = (data1 - data2);
+        TimeSpan timeDifference = (data1 - data2);
 
-        if(data_span < TimeSpan.Zero)
+        if(timeDifference < TimeSpan.Zero)
         {
-            return dif_data; // Retorna um array vazio se a diferença for negativa
+            return diferencaDatasArray; // Retorna um array vazio se a diferença for negativa
         }
 
         Calendar cal = new GregorianCalendar(); // Cria uma instância do calendário gregoriano para manipulação de datas
 
-        if (data_span.TotalDays > (cal.GetDaysInYear(2029) + DateTime.DaysInMonth(0001, 1)))
+        if (timeDifference.TotalDays > (cal.GetDaysInYear(2029) + DateTime.DaysInMonth(0001, 1)))
         {
 
             //preparando a variável de dias para somar com o datetime, como ele começa 01/01/0001 para ter a diferença exata precisamos tirar esses dias do total
 
-            TimeSpan add_span = TimeSpan.FromDays(data_span.TotalDays - cal.GetDaysInYear(formatura.Year));
+            TimeSpan add_span = TimeSpan.FromDays(timeDifference.TotalDays - cal.GetDaysInYear(formatura.Year));
 
-            DateTime dif_data_dt = new DateTime().AddDays(add_span.TotalDays);
+            DateTime diferencaDataFormatada = new DateTime().AddDays(add_span.TotalDays);
 
-            dif_data[0] = dif_data_dt.Year;
-            dif_data[1] = dif_data_dt.Month;
-            dif_data[2] = dif_data_dt.Day;
+            diferencaDatasArray[0] = diferencaDataFormatada.Year;
+            diferencaDatasArray[1] = diferencaDataFormatada.Month;
+            diferencaDatasArray[2] = diferencaDataFormatada.Day;
 
         }
         else
         {
             // Calcula a diferença entre as datas em anos, meses e dias
-            int dia_mes_1 = DateTime.DaysInMonth(data2.Year, data2.Month);
+            int diasNoMesAtual = DateTime.DaysInMonth(data2.Year, data2.Month);
                 
             int anos = (data1.Year - data2.Year);
             int meses = (data1.Month - data2.Month);
@@ -107,7 +107,7 @@ public class Program
 
             if (dias < 0)
             {
-                dias += dia_mes_1; // Ajusta os dias para ser positivo
+                dias += diasNoMesAtual; // Ajusta os dias para ser positivo
                 meses--; // Reduz o mês se os dias forem negativos
             }
 
@@ -117,33 +117,33 @@ public class Program
 
             anos = anos < 0 ? 0 : anos; // Garante que anos não seja negativo
 
-            dif_data[0] = anos;
-            dif_data[1] = meses;
-            dif_data[2] = dias;
+            diferencaDatasArray[0] = anos;
+            diferencaDatasArray[1] = meses;
+            diferencaDatasArray[2] = dias;
 
 
         }
 
-        return dif_data;
+        return diferencaDatasArray;
         }
 
-    static void apresentarProxDias(int[] prox_dias)
+    static void ApresentarProxDias(int[] diasRestantes)
     {
         // Apresenta a diferença entre as datas em anos, meses e dias
 
-        if (prox_dias[0] == 0 && prox_dias[1] == 0 && prox_dias[2] == 0)
+        if (diasRestantes[0] == 0 && diasRestantes[1] == 0 && diasRestantes[2] == 0)
         {
             Console.WriteLine("Você já está formado!");
 
         }
-        else if (prox_dias[0] == 0 && prox_dias[1] < 6)
+        else if (diasRestantes[0] == 0 && diasRestantes[1] < 6)
         {
-            Console.WriteLine("Faltam {0} anos, {1} meses e {2} dias para a formatura!", prox_dias[0], prox_dias[1], prox_dias[2]);
+            Console.WriteLine("Faltam {0} anos, {1} meses e {2} dias para a formatura!", diasRestantes[0], diasRestantes[1], diasRestantes[2]);
             Console.WriteLine("A reta final chegou! Prepare-se para a formatura!");
         }
         else
         {
-            Console.WriteLine("Faltam {0} anos, {1} meses e {2} dias para a formatura!", prox_dias[0], prox_dias[1], prox_dias[2]);
+            Console.WriteLine("Faltam {0} anos, {1} meses e {2} dias para a formatura!", diasRestantes[0], diasRestantes[1], diasRestantes[2]);
         }
             
     }

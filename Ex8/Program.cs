@@ -14,14 +14,14 @@ class Program
 
         // Exibindo os dados do funcionário
         Console.WriteLine("Dados do Funcionário:");
-        Console.WriteLine($"Nome: {funcionario.nome}");
-        Console.WriteLine($"Cargo: {funcionario.cargo}");
-        Console.WriteLine($"Salário: {funcionario.salarioBase.ToString("C2")}");
+        Console.WriteLine($"Nome: {funcionario.Nome}");
+        Console.WriteLine($"Cargo: {funcionario.Cargo}");
+        Console.WriteLine($"Salário: {funcionario.SalarioBase.ToString("C2")}");
 
         // Exibindo os dados do gerente
         Console.WriteLine("\nDados do Gerente:");
-        Console.WriteLine($"Nome: {gerente.nome}");
-        Console.WriteLine($"Cargo: {gerente.cargo}");
-        Console.WriteLine($"Salário: {gerente.salarioBase.ToString("C2")}");
+        Console.WriteLine($"Nome: {gerente.Nome}");
+        Console.WriteLine($"Cargo: {gerente.Cargo}");
+        Console.WriteLine($"Salário: {gerente.SalarioBase.ToString("C2")}");
     }
 }

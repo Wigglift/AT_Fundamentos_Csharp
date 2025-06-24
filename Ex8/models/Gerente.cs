@@ -11,7 +11,7 @@ namespace Ex8.models
        
         public Gerente(String nome, String cargo) : base(nome, cargo) { 
         
-            this.salarioBase = this.salarioBase*1.2; // Atribuindo um salário base específico para o Gerente
+            this.SalarioBase = this.SalarioBase*1.2; // Atribuindo um salário base específico para o Gerente
 
         }
 
